@@ -11,7 +11,7 @@ public class Test {
 	private String password;
 
 	public Test() {
-		id = 0;
+		
 	}
 
 	public Test(long id, String username, String email, String password) {

@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
@@ -27,10 +29,12 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="test/get/{id}", method=RequestMethod.GET)
-	String showEditarUsuarioForm(@PathVariable Integer id, Model model){
+	public ModelAndView showEditarUsuarioForm(@PathVariable Integer id){
+		ModelAndView model = new ModelAndView();
 		Test test= testService.findTodoById(id);
-		model.addAttribute("test", test);
-		return "home";
+		model.addObject("test", test);
+		  model.setViewName("/home");//login
+		return model;
 	}
 	
 }
